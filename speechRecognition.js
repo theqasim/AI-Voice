@@ -68,6 +68,7 @@ if ("webkitSpeechRecognition" in window) {
 
             document.querySelector("#status").style.display = "none";
             speechRecognition.stop();
+            // this is a change
         }
     });
 
