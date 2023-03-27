@@ -47,10 +47,8 @@ if ("webkitSpeechRecognition" in window) {
         const data = await response.json();
         const aiResponse = data.choices[0].text;
         const responseElement = document.querySelector("#response");
-        responseElement.innerHTML = `<pre><code class="language-javascript">${aiResponse}</code></pre>`;
+        responseElement.innerHTML = aiResponse;
 
-        Prism.highlightAll();
-        new ClipboardJS('.copy-to-clipboard');
 
         const voiceAssistantCheckbox = document.querySelector("#voice-assistant-checkbox");
         if (voiceAssistantCheckbox.checked) {
