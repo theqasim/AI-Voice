@@ -14,6 +14,11 @@ if ("webkitSpeechRecognition" in window) {
     speechRecognition.onstart = () => {
         // Show the Status Element
         document.querySelector("#status").style.display = "block";
+        // Clear the final, interim, and response text
+        final_transcript = "";
+        document.querySelector("#final").innerHTML = "";
+        document.querySelector("#interim").innerHTML = "";
+        document.querySelector("#response").innerHTML = "";
     };
     speechRecognition.onerror = () => {
         // Hide the Status Element
@@ -55,15 +60,17 @@ if ("webkitSpeechRecognition" in window) {
         }
     };
 
-
-
-
     document.addEventListener("keydown", function(event) {
         if (event.code === "KeyS") {
-            document.querySelector("#final").innerHTML = "";
-            document.querySelector("#response").innerHTML = "";
+            const finalText = document.getElementById('final');
+            const interimText = document.getElementById('interim');
+            const responseText = document.getElementById('response');
+            finalText.textContent = '';
+            interimText.textContent = '';
+            responseText.textContent = '';
             speechRecognition.start();
         }
+
         if (event.code === "KeyD") {
 
             document.querySelector("#status").style.display = "none";
